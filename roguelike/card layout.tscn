@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://beot6bkcxo4bg"]
+
+[ext_resource type="FontFile" uid="uid://ce0naq55jq01y" path="res://menu/font/NicerNightie.ttf" id="1_dggsw"]
+[ext_resource type="Script" uid="uid://dyh45sf3l785k" path="res://scenes/roguelike/card_display.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bd2iaglvragl2" path="res://assets/fish/kelpforest/sockeyesalmon.png" id="2_g8ino"]
+[ext_resource type="FontFile" uid="uid://b2h1oiuwns7jp" path="res://menu/font/BoldPixels.otf" id="3_5lwv5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_pvw2t"]
+
+[node name="CardDisplay" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Back" type="TextureRect" parent="."]
+visible = false
+offset_right = 239.0
+offset_bottom = 348.54172
+texture = SubResource("CanvasTexture_pvw2t")
+
+[node name="Front" type="TextureRect" parent="."]
+offset_right = 254.0
+offset_bottom = 348.54172
+texture = SubResource("CanvasTexture_pvw2t")
+
+[node name="Bait" type="Label" parent="Front"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 228.0
+offset_top = -35.0
+offset_right = 282.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.089505844, 0.16957438, 0.24214596, 1)
+theme_override_fonts/font = ExtResource("1_dggsw")
+theme_override_font_sizes/font_size = 76
+text = "2"
+horizontal_alignment = 1
+
+[node name="Container" type="Container" parent="Front"]
+layout_mode = 0
+offset_right = 254.0
+offset_bottom = 348.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Front/Container"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Front/Container/VBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.089505844, 0.16957438, 0.24214596, 1)
+theme_override_fonts/font = ExtResource("1_dggsw")
+theme_override_font_sizes/font_size = 60
+text = "Salmon"
+horizontal_alignment = 1
+
+[node name="Image" type="TextureRect" parent="Front/Container/VBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("2_g8ino")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Front/Container/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 6.05
+alignment = 1
+
+[node name="Hook" type="Label" parent="Front/Container/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.089505844, 0.16957438, 0.24214596, 1)
+theme_override_fonts/font = ExtResource("1_dggsw")
+theme_override_font_sizes/font_size = 60
+text = "2"
+horizontal_alignment = 1
+
+[node name="Line" type="Label" parent="Front/Container/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.089505844, 0.16957438, 0.24214596, 1)
+theme_override_fonts/font = ExtResource("1_dggsw")
+theme_override_font_sizes/font_size = 60
+text = "3"
+horizontal_alignment = 1
+
+[node name="Sinker" type="Label" parent="Front/Container/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.089505844, 0.16957438, 0.24214596, 1)
+theme_override_fonts/font = ExtResource("1_dggsw")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="AbilityDesc" type="Label" parent="Front/Container/VBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.089505844, 0.16957438, 0.24214596, 1)
+theme_override_fonts/font = ExtResource("3_5lwv5")
+theme_override_font_sizes/font_size = 30
+text = "details of sinker (blank if none)"
+horizontal_alignment = 1
+autowrap_mode = 3

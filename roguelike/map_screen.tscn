@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://map_screen"]
+
+[ext_resource type="Script" path="res://scenes/roguelike/map_ui.gd" id="1_ui"]
+[ext_resource type="Script" path="res://scenes/roguelike/map_manager.gd" id="2_manager"]
+
+[node name="MapScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ui")
+
+[node name="MapManager" type="Node" parent="."]
+script = ExtResource("2_manager")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.1, 0.14, 1.0)
+
+[node name="AreaLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "THE SHALLOWS"
+horizontal_alignment = 1
+
+[node name="MapContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Lines" type="Control" parent="MapContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Nodes" type="Control" parent="MapContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Legend" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="Legend"]
+layout_mode = 2
+text = "LEGEND"
+
+[node name="Combat" type="Label" parent="Legend"]
+layout_mode = 2
+text = "⚔ Combat"
+
+[node name="Elite" type="Label" parent="Legend"]
+layout_mode = 2
+text = "💀 Elite"
+
+[node name="Salvage" type="Label" parent="Legend"]
+layout_mode = 2
+text = "🔧 Salvage"
+
+[node name="Rest" type="Label" parent="Legend"]
+layout_mode = 2
+text = "⚓ Rest"
+
+[node name="Mystery" type="Label" parent="Legend"]
+layout_mode = 2
+text = "? Mystery"
+
+[node name="Merchant" type="Label" parent="Legend"]
+layout_mode = 2
+text = "💰 Merchant"
+
+[node name="Boss" type="Label" parent="Legend"]
+layout_mode = 2
+text = "👑 Boss"
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Click an available node to travel"
+horizontal_alignment = 2

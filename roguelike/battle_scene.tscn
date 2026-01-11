@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://battle_scene"]
+
+[ext_resource type="Script" path="res://scenes/roguelike/battle_scene.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://roguelike_bg" path="res://scenes/roguelike/roguelike_background.tscn" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://battle_board" path="res://scenes/roguelike/battle_board.tscn" id="3_board"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="RoguelikeBackground" parent="." instance=ExtResource("2_bg")]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="BattleBoard" parent="UILayer" instance=ExtResource("3_board")]

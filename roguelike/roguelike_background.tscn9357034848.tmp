@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdjqkaxufcjk4"]
+
+[ext_resource type="Script" uid="uid://b113qq3xa54pi" path="res://scenes/roguelike/roguelike_background.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bdqpmcvwrrxjm" path="res://scenes/roguelike/water_back.gd" id="2_water_back"]
+[ext_resource type="Texture2D" uid="uid://bd22g2rgqdmj5" path="res://assets/background/boat.png" id="3_pmdwg"]
+[ext_resource type="Script" uid="uid://b2htbnx57g4gj" path="res://scenes/roguelike/water_front.gd" id="3_water_front"]
+
+[node name="RoguelikeBackground" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Sky" type="ColorRect" parent="."]
+z_index = -10
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.1, 0.08, 0.12, 1)
+
+[node name="WaterBack" type="Node2D" parent="."]
+script = ExtResource("2_water_back")
+
+[node name="Boat" type="RigidBody2D" parent="."]
+z_index = 1
+position = Vector2(960, 520)
+linear_damp = 1.0
+angular_damp = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="Boat"]
+texture = ExtResource("3_pmdwg")
+
+[node name="WaterFront" type="Node2D" parent="."]
+z_index = 2
+script = ExtResource("3_water_front")

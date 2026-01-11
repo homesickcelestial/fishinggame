@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://btyuwchjauvpq"]
+
+[ext_resource type="Texture2D" uid="uid://byubr7dv7xgq4" path="res://assets/character/Untitled.png" id="1_char"]
+[ext_resource type="Script" uid="uid://cabc04le3x076" path="res://scenes/menus/player.gd" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://bshm0guwcn2oo" path="res://assets/background/base.png" id="3_base"]
+[ext_resource type="Script" uid="uid://bbk2hmhfgpv3" path="res://scenes/new eko/boat_interact_new_eko.gd" id="4_boat"]
+[ext_resource type="Texture2D" uid="uid://cellir5uog6ut" path="res://assets/background/sky2.png" id="5_sky2"]
+[ext_resource type="Texture2D" uid="uid://cp6ksx0jded0f" path="res://assets/background/sky1.png" id="6_sky1"]
+[ext_resource type="Script" uid="uid://c74ccyh8s6sb4" path="res://scenes/menus/base-to-forest.gd" id="7_transition"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf21r"]
+atlas = ExtResource("1_char")
+region = Rect2(0, 0, 120, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ahtu"]
+atlas = ExtResource("1_char")
+region = Rect2(120, 0, 120, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bdtw"]
+atlas = ExtResource("1_char")
+region = Rect2(240, 0, 120, 216)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nojbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf21r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf21r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ahtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf21r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bdtw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aybiv"]
+size = Vector2(62, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v3t1"]
+size = Vector2(538.5, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h3cm"]
+size = Vector2(186.25, 347)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["main_camera"]]
+position = Vector2(960, 540)
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(952, 622)
+script = ExtResource("2_player")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(78, 121)
+sprite_frames = SubResource("SpriteFrames_nojbv")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(84, 128.5)
+shape = SubResource("RectangleShape2D_aybiv")
+
+[node name="Camp Background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(-153, -44)
+texture = ExtResource("3_base")
+centered = false
+
+[node name="Area2d" type="Area2D" parent="Camp Background"]
+position = Vector2(-394, 790)
+script = ExtResource("4_boat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camp Background/Area2d"]
+position = Vector2(661.75, -36)
+shape = SubResource("RectangleShape2D_4v3t1")
+
+[node name="Camp Background3" type="Sprite2D" parent="Camp Background"]
+z_index = -10
+position = Vector2(-4, -8)
+texture = ExtResource("5_sky2")
+centered = false
+
+[node name="Camp Background2" type="Sprite2D" parent="Camp Background/Camp Background3"]
+z_index = -10
+position = Vector2(-2, -2)
+texture = ExtResource("6_sky1")
+centered = false
+
+[node name="Forest" type="Area2D" parent="." groups=["player"]]
+script = ExtResource("7_transition")
+target_scene_path = "res://scenes/menus/forest.tscn"
+target_spawn_name = "ForestSpawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forest"]
+position = Vector2(2709, 677)
+shape = SubResource("RectangleShape2D_1h3cm")
+
+[node name="BaseSpawn" type="Marker2D" parent="Forest"]
+position = Vector2(2540, 843)

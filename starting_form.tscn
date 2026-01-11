@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://8axbvty657t"]
+
+[ext_resource type="Texture2D" uid="uid://2cl73qx8txnp" path="res://assets/character/application.png" id="1_pdcai"]
+[ext_resource type="FontFile" uid="uid://b2h1oiuwns7jp" path="res://menu/font/BoldPixels.otf" id="2_dvb4g"]
+[ext_resource type="Texture2D" uid="uid://bx20rmve3irbb" path="res://assets/menu/dice.png" id="3_5jxdv"]
+[ext_resource type="Texture2D" uid="uid://dk60twdghn2fe" path="res://assets/menu/dice2.png" id="4_xgi2w"]
+[ext_resource type="FontFile" uid="uid://d0grqhdbbgxag" path="res://menu/font/pixel-script.otf" id="5_wwfgy"]
+[ext_resource type="Script" uid="uid://pnc31n7addn8" path="res://scenes/starting_form.gd" id="6_script"]
+[ext_resource type="Texture2D" uid="uid://cd7srxrqexlrv" path="res://assets/character/portrait.png" id="7_5jxdv"]
+
+[node name="StartingForm" type="Node2D"]
+script = ExtResource("6_script")
+
+[node name="Full Paper" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_pdcai")
+
+[node name="NameInput" type="LineEdit" parent="Full Paper"]
+texture_filter = 3
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
+offset_left = 800.0
+offset_top = 478.0
+offset_right = 1273.0
+offset_bottom = 570.0
+theme_override_colors/font_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_selected_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_placeholder_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/caret_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/selection_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/clear_button_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/clear_button_color_pressed = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_fonts/font = ExtResource("2_dvb4g")
+theme_override_font_sizes/font_size = 83
+placeholder_text = "Olamide"
+max_length = 14
+flat = true
+
+[node name="DiceButton" type="TextureButton" parent="Full Paper"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 1292.0
+offset_top = 504.00003
+offset_right = 1301.0
+offset_bottom = 513.0
+scale = Vector2(6, 6)
+texture_normal = ExtResource("3_5jxdv")
+texture_pressed = ExtResource("4_xgi2w")
+texture_hover = ExtResource("4_xgi2w")
+
+[node name="Signature" type="Button" parent="Full Paper"]
+texture_filter = 3
+layout_direction = 2
+layout_mode = 0
+offset_left = 83.000015
+offset_top = 2615.0
+offset_right = 1332.0
+offset_bottom = 2775.0
+rotation = -0.06981317
+theme_override_colors/font_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/font_focus_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/font_pressed_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.11042646, 0.35044068, 0.6303357, 1)
+theme_override_colors/font_disabled_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_colors/font_outline_color = Color(0.03529412, 0.13725491, 0.27058825, 1)
+theme_override_fonts/font = ExtResource("5_wwfgy")
+theme_override_font_sizes/font_size = 75
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="Full Paper"]
+layout_mode = 0
+offset_left = 1400.0
+offset_top = 260.0
+offset_right = 1933.0
+offset_bottom = 1013.937
+rotation = 0.13788101
+texture = ExtResource("7_5jxdv")
+expand_mode = 1
+
+[node name="FadeRect" type="ColorRect" parent="."]
+z_index = 100
+offset_left = -954.0
+offset_top = -1060.0
+offset_right = 3046.0
+offset_bottom = 3940.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

@@ -1,0 +1,209 @@
+[gd_scene load_steps=4 format=3 uid="uid://battle_board"]
+
+[ext_resource type="Script" path="res://scenes/roguelike/battle_board_ui.gd" id="1_ui"]
+[ext_resource type="Script" path="res://scenes/roguelike/battle_manager.gd" id="2_manager"]
+[ext_resource type="PackedScene" uid="uid://catch_minigame" path="res://scenes/roguelike/catch_minigame.tscn" id="3_catch"]
+
+[node name="BattleBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ui")
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("2_manager")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.1, 0.14, 1.0)
+
+[node name="BoardContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -220.0
+offset_right = 400.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="FishRow" type="HBoxContainer" parent="BoardContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="FishSlot0" type="Panel" parent="BoardContainer/FishRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="FishSlot1" type="Panel" parent="BoardContainer/FishRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="FishSlot2" type="Panel" parent="BoardContainer/FishRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="FishSlot3" type="Panel" parent="BoardContainer/FishRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="PlayerRow" type="HBoxContainer" parent="BoardContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CardSlot0" type="Panel" parent="BoardContainer/PlayerRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="CardSlot1" type="Panel" parent="BoardContainer/PlayerRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="CardSlot2" type="Panel" parent="BoardContainer/PlayerRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="CardSlot3" type="Panel" parent="BoardContainer/PlayerRow"]
+custom_minimum_size = Vector2(150, 160)
+layout_mode = 2
+
+[node name="BoatHP" type="HBoxContainer" parent="BoardContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="BoardContainer/BoatHP"]
+layout_mode = 2
+text = "BOAT:"
+
+[node name="HPLabel" type="Label" parent="BoardContainer/BoatHP"]
+layout_mode = 2
+text = "♥♥♥"
+
+[node name="HandContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -130.0
+offset_right = 400.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "END TURN"
+
+[node name="TurnLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "YOUR TURN"
+horizontal_alignment = 1
+
+[node name="BaitContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 50.0
+
+[node name="BaitIcon" type="Label" parent="BaitContainer"]
+layout_mode = 2
+text = "🪱"
+
+[node name="BaitLabel" type="Label" parent="BaitContainer"]
+layout_mode = 2
+text = "Bait: 1"
+
+[node name="DeckContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 250.0
+offset_bottom = 85.0
+
+[node name="DeckIcon" type="Label" parent="DeckContainer"]
+layout_mode = 2
+text = "🃏"
+
+[node name="DeckLabel" type="Label" parent="DeckContainer"]
+layout_mode = 2
+text = "Deck: 5 | Discard: 0"
+
+[node name="QueueLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 80.0
+offset_right = -20.0
+offset_bottom = 100.0
+grow_horizontal = 0
+text = "INCOMING:"
+horizontal_alignment = 2
+
+[node name="QueueContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = 105.0
+offset_right = -20.0
+offset_bottom = 130.0
+grow_horizontal = 0
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -155.0
+offset_right = 300.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Click card to select | Click again to attack | Right-click to sacrifice"
+horizontal_alignment = 1
+
+[node name="CatchMinigame" parent="." instance=ExtResource("3_catch")]
+visible = false

@@ -1,0 +1,63 @@
+[gd_scene load_steps=14 format=3 uid="uid://roguelike_game"]
+
+[ext_resource type="Script" path="res://scenes/roguelike/roguelike_game.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://map_screen" path="res://scenes/roguelike/map_screen.tscn" id="2_map"]
+[ext_resource type="PackedScene" uid="uid://battle_scene" path="res://scenes/roguelike/battle_scene.tscn" id="3_battle"]
+[ext_resource type="PackedScene" uid="uid://rest_screen" path="res://scenes/roguelike/rest_screen.tscn" id="4_rest"]
+[ext_resource type="PackedScene" uid="uid://salvage_screen" path="res://scenes/roguelike/salvage_screen.tscn" id="5_salvage"]
+[ext_resource type="PackedScene" uid="uid://mystery_screen" path="res://scenes/roguelike/mystery_screen.tscn" id="6_mystery"]
+[ext_resource type="PackedScene" uid="uid://merchant_screen" path="res://scenes/roguelike/merchant_screen.tscn" id="7_merchant"]
+[ext_resource type="PackedScene" uid="uid://rewards_screen" path="res://scenes/roguelike/rewards_screen.tscn" id="8_rewards"]
+[ext_resource type="PackedScene" uid="uid://game_over_screen" path="res://scenes/roguelike/game_over_screen.tscn" id="9_gameover"]
+[ext_resource type="PackedScene" uid="uid://hud_overlay" path="res://scenes/roguelike/hud_overlay.tscn" id="10_hud"]
+[ext_resource type="PackedScene" uid="uid://pause_menu" path="res://scenes/roguelike/pause_menu.tscn" id="11_pause"]
+[ext_resource type="PackedScene" uid="uid://tutorial_screen" path="res://scenes/roguelike/tutorial_screen.tscn" id="12_tutorial"]
+[ext_resource type="PackedScene" uid="uid://transition_manager" path="res://scenes/roguelike/transition_manager.tscn" id="13_transition"]
+
+[node name="RoguelikeGame" type="Node"]
+script = ExtResource("1_script")
+
+[node name="MapScreen" parent="." instance=ExtResource("2_map")]
+
+[node name="BattleLayer" type="CanvasLayer" parent="."]
+layer = 5
+visible = false
+
+[node name="BattleScene" parent="BattleLayer" instance=ExtResource("3_battle")]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="HUDOverlay" parent="UILayer" instance=ExtResource("10_hud")]
+
+[node name="RestScreen" parent="UILayer" instance=ExtResource("4_rest")]
+visible = false
+
+[node name="SalvageScreen" parent="UILayer" instance=ExtResource("5_salvage")]
+visible = false
+
+[node name="MysteryScreen" parent="UILayer" instance=ExtResource("6_mystery")]
+visible = false
+
+[node name="MerchantScreen" parent="UILayer" instance=ExtResource("7_merchant")]
+visible = false
+
+[node name="RewardsScreen" parent="UILayer" instance=ExtResource("8_rewards")]
+visible = false
+
+[node name="GameOverScreen" parent="UILayer" instance=ExtResource("9_gameover")]
+visible = false
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("11_pause")]
+visible = false
+
+[node name="TutorialLayer" type="CanvasLayer" parent="."]
+layer = 60
+
+[node name="TutorialScreen" parent="TutorialLayer" instance=ExtResource("12_tutorial")]
+visible = false
+
+[node name="TransitionManager" parent="." instance=ExtResource("13_transition")]
