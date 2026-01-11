@@ -1,0 +1,173 @@
+[gd_scene load_steps=23 format=3 uid="uid://c61so8spq05s7"]
+
+[ext_resource type="Texture2D" uid="uid://byubr7dv7xgq4" path="res://assets/character/Untitled.png" id="1_char"]
+[ext_resource type="Script" uid="uid://cabc04le3x076" path="res://scenes/menus/player.gd" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://dn76prwymsxi7" path="res://assets/background/forest.png" id="3_forest"]
+[ext_resource type="Script" uid="uid://bbk2hmhfgpv3" path="res://scenes/new eko/boat_interact_new_eko.gd" id="4_boat"]
+[ext_resource type="Texture2D" uid="uid://cellir5uog6ut" path="res://assets/background/sky2.png" id="5_sky2"]
+[ext_resource type="Texture2D" uid="uid://cp6ksx0jded0f" path="res://assets/background/sky1.png" id="6_sky1"]
+[ext_resource type="Texture2D" uid="uid://b1c0f3aibqtkr" path="res://assets/character/bear.png" id="7_bear"]
+[ext_resource type="Script" uid="uid://qpexw4l0kt4w" path="res://scenes/menus/bear.gd" id="8_bearscript"]
+[ext_resource type="Texture2D" uid="uid://jkkjp0ks3sjj" path="res://assets/character/bear2.png" id="9_bear2"]
+[ext_resource type="Texture2D" uid="uid://bd2iaglvragl2" path="res://assets/fish/kelpforest/sockeyesalmon.png" id="10_salmon"]
+[ext_resource type="Script" uid="uid://c74ccyh8s6sb4" path="res://scenes/menus/base-to-forest.gd" id="11_transition"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf21r"]
+atlas = ExtResource("1_char")
+region = Rect2(0, 0, 120, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ahtu"]
+atlas = ExtResource("1_char")
+region = Rect2(120, 0, 120, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bdtw"]
+atlas = ExtResource("1_char")
+region = Rect2(240, 0, 120, 216)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nojbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf21r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf21r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ahtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf21r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bdtw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aybiv"]
+size = Vector2(62, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v3t1"]
+size = Vector2(538.5, 253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bear1"]
+atlas = ExtResource("7_bear")
+region = Rect2(0, 0, 592, 449)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bear2"]
+atlas = ExtResource("9_bear2")
+region = Rect2(0, 0, 592, 449)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bear"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bear1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bear2")
+}],
+"loop": true,
+"name": &"open mouth",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bear"]
+size = Vector2(578, 397)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_transition"]
+size = Vector2(186.25, 347)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["main_camera"]]
+position = Vector2(960, 540)
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(150, 622)
+script = ExtResource("2_player")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(78, 121)
+sprite_frames = SubResource("SpriteFrames_nojbv")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(84, 128.5)
+shape = SubResource("RectangleShape2D_aybiv")
+
+[node name="Camp Background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(-153, -44)
+texture = ExtResource("3_forest")
+centered = false
+
+[node name="Area2d" type="Area2D" parent="Camp Background"]
+position = Vector2(-394, 790)
+script = ExtResource("4_boat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camp Background/Area2d"]
+position = Vector2(661.75, -36)
+shape = SubResource("RectangleShape2D_4v3t1")
+
+[node name="Camp Background3" type="Sprite2D" parent="Camp Background"]
+z_index = -10
+position = Vector2(-4, -8)
+texture = ExtResource("5_sky2")
+centered = false
+
+[node name="Camp Background2" type="Sprite2D" parent="Camp Background/Camp Background3"]
+z_index = -10
+position = Vector2(-2, -2)
+texture = ExtResource("6_sky1")
+centered = false
+
+[node name="Bear" type="Area2D" parent="."]
+script = ExtResource("8_bearscript")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bear"]
+position = Vector2(1082, 724)
+scale = Vector2(0.63808465, 0.63808465)
+sprite_frames = SubResource("SpriteFrames_bear")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bear"]
+position = Vector2(1075, 682)
+shape = SubResource("RectangleShape2D_bear")
+
+[node name="Salmon" type="TextureRect" parent="Bear"]
+visible = false
+texture_filter = 3
+offset_left = 864.0
+offset_top = 480.0
+offset_right = 1022.0
+offset_bottom = 559.0
+texture = ExtResource("10_salmon")
+expand_mode = 3
+
+[node name="Base" type="Area2D" parent="."]
+script = ExtResource("11_transition")
+target_scene_path = "res://scenes/menus/base.tscn"
+target_spawn_name = "BaseSpawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
+position = Vector2(95, 680)
+shape = SubResource("RectangleShape2D_transition")
+
+[node name="ForestSpawn" type="Marker2D" parent="Base"]
+position = Vector2(302, 852)
+
+[connection signal="body_entered" from="Bear" to="Bear" method="_on_body_entered"]
+[connection signal="body_exited" from="Bear" to="Bear" method="_on_body_exited"]
