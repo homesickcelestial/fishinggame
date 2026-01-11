@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cptcphy1cywek"
+path="res://.godot/imported/deal 1.mp3-ea86c186cd8a8ddee1f832d18cd8ac84.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/cards/deal 1.mp3"
+dest_files=["res://.godot/imported/deal 1.mp3-ea86c186cd8a8ddee1f832d18cd8ac84.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
